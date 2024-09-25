@@ -1,19 +1,25 @@
 import random
 class Hero:
-    def __init__(self, name, health, damage):
+    def __init__(self, name, health, attack_power):
         self.name = name  # Имя героя
         self.health = health  # Здоровье
-        self.damage = damage  # Урон
+        self.attack_power = attack_power  # сила атаки
 
     def info(self):
-        print(f"Name: {self.name}\nHealth: {self.health}\nDamage: {self.damage}\nDefence: {self.defence}")
+        print(f"Имя: {self.name}\nЗдоровье: {self.health}\nСила атаки: {self.attack_power}")
     def attack(self, enemy):
-        enemy.health -= self.damage
-        print(f"{self.name} атакует {enemy.name} и наносит {self.damage} урона.")
+        enemy.health -= self.attack_power
+        print(f"{self.name} атакует {enemy.name} и наносит {self.attack_power} урона.")
+    def is_alive(self):
+        return self.health > 0   # если здоровье больше нуля, то герои живы (True)
+
 class PlayerHero(Hero):
     pass
 
 class ComputerHero(Hero):
+    pass
+
+class Game:
     pass
 
 def battle(player, computer):
@@ -21,7 +27,4 @@ def battle(player, computer):
 
 
 
-player = PlayerHero("Player", 100, 10)
-computer = ComputerHero("Computer", 100, 10)
 
-battle(player, computer)
