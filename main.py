@@ -14,10 +14,33 @@ class Hero:
         return self.health > 0   # если здоровье больше нуля, то герои живы (True)
 
 class PlayerHero(Hero):
-    pass
+    def __init__(self, name, health, attack_power):
+        super().__init__(name, health, attack_power)
+        self.armor = random.randint(1, 10) # Защита (случайное число от 1 до 10)
+
+    def attack(self, enemy):
+        damage = self.attack_power - enemy.armor
+        if damage < 0:
+            damage = 0
+        enemy.health -= damage
+        print(f"{self.name} атакует {enemy.name} и наносит {damage} урона.")
+
+    def info(self):
+        print(f"Имя: {self.name}\nЗдоровье: {self.health}\nСила атаки: {self.attack_power}\nЗащита: {self.armor}")
+
+
 
 class ComputerHero(Hero):
-    pass
+    def __init__(self, name, health, attack_power):
+        super().__init__(name, health, attack_power)
+
+    def attack(self, enemy):
+        damage = self.attack_power
+        enemy.health -= damage
+        print(f"{self.name} атакует {enemy.name} и наносит {damage} урона.")
+
+    def info(self):
+        print(f"Имя: {self.name}\nЗдоровье: {self.health}\nСила атаки: {self.attack_power}")
 
 class Game:
     pass
